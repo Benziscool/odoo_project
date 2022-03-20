@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- custom billing-->
+
+        <record model="ir.ui.view" id="ez_maint_billing">
+      <field name="name">ez maint billing list</field>
+      <field name="model">maint.billing</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree multi_edit="1">
+          <field name="billing_no"/>
+          <field name="bill_from_date"/>
+          <field name="bill_to_date"/>
+          <field name="customer"/>
+          <field name="billing_asset"/>
+        </tree>
+      </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="ez_maint_billing_action_window">
+      <field name="name">Billing</field>
+      <field name="res_model">maint.billing</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{}</field>
+      <field name="help" type="html">
+      <p class="o_view_content_smiling_face">
+        Create a new billing
+      </p>
+      </field>
+    </record>
+
+        <record id="view_maint_billing_frm" model="ir.ui.view">
+            <field name="name">maint.billing.frm</field>
+            <field name="model">maint.billing</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                    <field name="bill_from_date"/>
+                    <field name="bill_to_date"/>
+                            </group>
+                            <group>
+                    <field name="billing_no"/>
+                    <field name="customer"/>
+                    <field name="billing_asset"/>
+                            </group>
+                            <group>
+                    <field name="tr_view"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!-- End of custom billing  -->
+
+        <!-- custom billing line -->
+
+        <record model="ir.ui.view" id="ez_maint_billing_line">
+      <field name="name">ez maint billing line list</field>
+      <field name="model">maint.billing.line</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree multi_edit="1">
+          <field name="billing_ids"/>
+          <field name="transid"/>
+        </tree>
+      </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="ez_maint_billing_line_action_window">
+      <field name="name">Billing line</field>
+      <field name="res_model">maint.billing.line</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{}</field>
+      <field name="help" type="html">
+      <p class="o_view_content_smiling_face">
+        Create a new billing
+      </p>
+      </field>
+    </record>
+
+        <record id="view_maint_billing_frm" model="ir.ui.view">
+            <field name="name">maint.billing.line.frm</field>
+            <field name="model">maint.billing.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+
+                <form>
+                    <sheet>
+                        <group>
+                    <field name="billing_ids"/>
+                        </group>
+                        <group>
+                    <field name="transid"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- End of custom billing line-->
+
+
+        <!--Custom chargertransactions-->
+      <record model="ir.ui.view" id="view_ez_maint_chargertransaction">
+      <field name="name">ez maint chargetransaction list</field>
+      <field name="model">maint.chargetransaction</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree multi_edit="1">
+
+          <field name="trans_id"/>
+          <field name="startAt"/>
+          <field name="stopAt"/>
+          <field name="ChargerUserID"/>
+          <field name="ChargerLocID"/>
+          <field name="ChargerID"/>
+          <field name="connectorID"/>
+         </tree>
+      </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="ez_maint_chargertransactions_action_window">
+      <field name="name">Chargertransaction</field>
+      <field name="res_model">maint.chargetransaction</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{}</field>
+      <field name="help" type="html">
+      <p class="o_view_content_smiling_face">
+        Create a new chargertransaction
+      </p>
+      </field>
+    </record>
+
+        <record model="ir.ui.view" id="view_ez_maint_chargertransaction_frm">
+      <field name="name">ez maint chargertransaction list</field>
+      <field name="model">maint.chargetransaction</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+
+        <form>
+          <sheet>
+
+              <group>
+          <group>
+<!--              <button string="Done" name="doTest" type="object"/>-->
+<!--              <field name="trans_id"/>-->
+              <field name="startAt"/>
+              <field name="stopAt"/>
+              <field name="ChargerUserID"/>
+              <field name="ChargerLocID"/>
+              <field name="ChargerID"/>
+
+              <field name="connectorID"/>
+              <field name="identityKey"/>
+              <field name="startCmd"/>
+              <field name="chargeType"/>
+              <field name="lockedAt"/>
+              <field name="unlockedAt"/>
+              <field name="vehicle"/>
+              <field name="chargedBy"/>
+              <field name="backendTransID"/>
+            </group>
+
+            <group>
+              <field name="chargeRateKW"/>
+              <field name="chargeRatePerMin"/>
+                <field name="totalChargeTime"/>
+            <field name="totalChargeKW"/>
+
+            <field name="startMeter"/>
+            <field name="stopMeter"/>
+
+            <field name="payeeRef"/>
+            <field name="payRef"/>
+            <field name="paidStatus"/>
+            <field name="paymentSource"/>
+            <field name="lineTransRef"/>
+              <field name="prepaidCost"/>
+            <field name="prepaidKey"/>
+            <field name="chargeCurrency"/>
+            </group>
+              </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+        <!--End Custom chargertransactions-->
+
+
+
+
+       <menuitem id="maint_root" name="Maint." sequence="10"/>
+
+
+        <menuitem id="maint_billing"
+                  name="Billing"
+                  parent ="maint_root"
+                  action="ez_maint_billing_action_window"
+                  sequence="11"/>
+
+        <menuitem id="maint_billings"
+                  name="Billing"
+                  parent ="maint_billing"
+                  action="ez_maint_billing_action_window"
+                  sequence="12"/>
+
+        <menuitem id="maint_billing_line"
+                  name="Billing Line"
+                  parent ="maint_billing"
+                  action="ez_maint_billing_line_action_window"
+                  sequence="12"/>
+
+        <menuitem id="maint_chargetransaction"
+                  name="ChargeTransactions"
+                  parent ="maint_billing"
+                  action="ez_maint_chargertransactions_action_window"
+                  sequence="12"/>
+
+    </data>
+</odoo>

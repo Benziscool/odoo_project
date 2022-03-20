@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="ez_maint_asset_category">
+      <field name="name">ez maint asset category list</field>
+      <field name="model">maint.asset.category</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+          <field name="asset_category"/>
+          <field name="category_description"/>
+<!--          <field name="asset_ids"/>-->
+      </field>
+    </record>
+
+        <record model="ir.actions.act_window" id="ez_maint_asset_cate_action_window">
+      <field name="name">ez maint asset category</field>
+      <field name="res_model">maint.asset.category</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{}</field>
+      <field name="help" type="html">
+      <p class="o_view_content_smiling_face">
+        Create a new asset
+      </p>
+      </field>
+    </record>
+
+
+        <menuitem id="maint_root" name="Maint" sequence="10"/>
+
+        <menuitem id="maint_asset_category"
+                  name="Asset Category"
+                  parent="maint_rot"
+                  action="ez_maint_asset_cate_action_window"
+                  sequence="11"
+        />
+
+    </data>
+</odoo>
+

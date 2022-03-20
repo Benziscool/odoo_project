@@ -1,0 +1,170 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="ez_maint_tree">
+      <field name="name">ez maint list</field>
+      <field name="model">maint.location</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+
+          <field name="name"/>
+          <field name="location"/>
+          <field name="lat"/>
+          <field name="lng"/>
+          <field name="location_type_id"/>
+          <field name="owner_id"/>
+          <field name="owner"/>
+
+      </field>
+    </record>
+      <!-- End list views on models -->
+
+      <!-- start kanban views on models -->
+<!--      <record model="ir.ui.view" id="view locations kanban">-->
+<!--      <field name="name">ez maint list</field>-->
+<!--      <field name="model">maint.location</field>-->
+<!--      <field name="type">tree</field>-->
+<!--      <field name="arch" type="xml">-->
+<!--          <field name="name"/>-->
+<!--          <field name="location"/>-->
+<!--          <field name="lat"/>-->
+<!--          <field name="lng"/>-->
+<!--          <field name="location_type_id"/>-->
+<!--          <field name="owner_id"/>-->
+<!--          <field name="owner"/>-->
+<!--      </field>-->
+<!--    </record>-->
+      <!-- End kanban views on models -->
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="ez_maint_action_window">
+      <field name="name">Locations</field>
+      <field name="res_model">maint.location</field>
+      <field name="view_mode">tree,form,kanban</field>
+      <field name="context">{}</field>
+      <field name="help" type="html">
+      <p class="o_view_content_smiling_face">
+        Create a new location
+      </p>
+      </field>
+    </record>
+
+
+      <record id="view_maint_location_frm" model="ir.ui.view">
+            <field name="name">maint.location.frm</field>
+            <field name="model">maint.location</field>
+<!--<field name="type">form</field>-->
+            <field name="arch" type="xml">
+                <form string="Location">
+                    <sheet string="Location">
+                        <div class="oe_title">
+                    <label class="oe_edit_only" for="name" string="Location Name"/>
+                    <h1>
+                        <field name="name" placeholder="Enter location name"/>
+                    </h1>
+                </div>
+                        <group>
+                            <group>
+                    <field name="location"/>
+                    <field name="lat"/>
+                    <field name="name"/>
+                            </group>
+
+                            <group>
+                        <field name="lng"/>
+                        <field name="location_type_id"/>
+                        <field name="owner"/>
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+    <!-- server action to the one above -->
+
+<!--    <record model="ir.ui.view" id="ez_maint.action_server">-->
+<!--      <field name="name">ez_maint server</field>-->
+<!--      <field name="model_id" ref="model_ez_maint_ez_maint"/>-->
+<!--      <field name="state">code</field>-->
+<!--      <field name="code">-->
+<!--        action = {-->
+<!--          "type": "ir.actions.act_window",-->
+<!--          "view_mode": "tree,form",-->
+<!--          "res_model": model._name,-->
+<!--        }-->
+<!--      </field>-->
+<!--    </record>-->
+
+    <record id="maint_location_type_tree" model="ir.actions.act_window">
+        <field name="name">Locations Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">maint.location.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_content_smiling_face">
+                Create a new location 1111111
+            </p>
+        </field>
+        </record>
+
+       <record id="view_maint_location_type_tree" model="ir.ui.view">
+            <field name="name">maint.location.type.tree1</field>
+            <field name="model">maint.location.type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <field name="location_type"/>
+                <field name="type_description"/>
+            </field>
+                </record>
+
+
+       <record id="view_maint_location_type_frm" model="ir.ui.view">
+            <field name="name">maint.location.type.frm</field>
+            <field name="model">maint.location.type</field>
+<!--            <field name="type">form</field>-->
+            <field name="arch" type="xml">
+
+                <form string="Location Type">
+                    <button string="Done" name="doTest" type="object"/>
+                    <sheet string="Location Type">
+                        <group>
+                    <field name="location_type"/>
+                    <field name="type_description"/>
+                        </group>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+
+      <menuitem id="maint_root" name="Maint." sequence="10"/>
+
+        <menuitem id="maint_location"
+                  name="Location"
+                  parent ="maint_root"
+                  action="ez_maint_action_window"
+                  sequence="10"/>
+
+        <menuitem id="maint_locations"
+                  name="Locations"
+                  parent ="maint_location"
+                  action="ez_maint_action_window"
+                  sequence="11"/>
+
+        <menuitem id="maint_location_view"
+                  name="Location Type"
+                  parent ="maint_location"
+                  action="maint_location_type_tree"
+                  sequence="12"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_ez_maint_chargertransaction">
+      <field name="name">ez maint chargetransaction list</field>
+      <field name="model">maint.chargetransaction</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree multi_edit="1">
+
+          <field name="trans_id"/>
+          <field name="startAt"/>
+          <field name="stopAt"/>
+          <field name="ChargerUserID"/>
+          <field name="ChargerLocID"/>
+          <field name="ChargerID"/>
+          <field name="connectorID"/>
+<!--          <field name="identityKey"/>-->
+<!--          <field name="startCmd"/>-->
+<!--          <field name="chargeType"/>-->
+<!--          <field name="lockedAt"/>-->
+<!--          <field name="unlockedAt"/>-->
+<!--          <field name="vehicle"/>-->
+<!--          <field name="chargedBy"/>-->
+<!--          <field name="backendTransID"/>-->
+
+<!--          <field name="chargeRateKW"/>-->
+<!--          <field name="chargeRatePerMin"/>-->
+
+<!--          <field name="totalChargeTime"/>-->
+<!--          <field name="totalChargeKW"/>-->
+
+<!--          <field name="totalChargeTime"/>-->
+<!--          <field name="totalChargeKW"/>-->
+
+<!--          <field name="startMeter"/>-->
+<!--          <field name="stopMeter"/>-->
+
+<!--          <field name="payeeRef"/>-->
+<!--          <field name="payRef"/>-->
+<!--          <field name="paidStatus"/>-->
+<!--          <field name="paymentSource"/>-->
+<!--          <field name="lineTransRef"/>-->
+
+<!--          <field name="prepaidCost"/>-->
+<!--          <field name="prepaidKey"/>-->
+<!--          <field name="chargeCurrency"/>-->
+
+        </tree>
+      </field>
+    </record>
+
+
+      <!--Actions of chargertransactions-->
+      <record model="ir.actions.act_window" id="ez_maint_chargertransactions_action_window">
+      <field name="name">Chargertransaction</field>
+      <field name="res_model">maint.chargetransaction</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{}</field>
+      <field name="help" type="html">
+      <p class="o_view_content_smiling_face">
+        Create a new chargertransaction
+      </p>
+      </field>
+    </record>
+
+
+
+      <!--start custom view form chargerTransaction-->
+
+      <record model="ir.ui.view" id="view_ez_maint_chargertransaction_frm">
+      <field name="name">ez maint chargertransaction list</field>
+      <field name="model">maint.chargetransaction</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+
+        <form>
+          <sheet>
+
+              <group>
+          <group>
+<!--              <button string="Done" name="doTest" type="object"/>-->
+<!--              <field name="trans_id"/>-->
+              <field name="startAt"/>
+              <field name="stopAt"/>
+              <field name="ChargerUserID"/>
+              <field name="ChargerLocID"/>
+              <field name="ChargerID"/>
+
+              <field name="connectorID"/>
+              <field name="identityKey"/>
+              <field name="startCmd"/>
+              <field name="chargeType"/>
+              <field name="lockedAt"/>
+              <field name="unlockedAt"/>
+              <field name="vehicle"/>
+              <field name="chargedBy"/>
+              <field name="backendTransID"/>
+            </group>
+
+            <group>
+              <field name="chargeRateKW"/>
+              <field name="chargeRatePerMin"/>
+                <field name="totalChargeTime"/>
+            <field name="totalChargeKW"/>
+
+            <field name="startMeter"/>
+            <field name="stopMeter"/>
+
+            <field name="payeeRef"/>
+            <field name="payRef"/>
+            <field name="paidStatus"/>
+            <field name="paymentSource"/>
+            <field name="lineTransRef"/>
+              <field name="prepaidCost"/>
+            <field name="prepaidKey"/>
+            <field name="chargeCurrency"/>
+            </group>
+              </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+      <!--End of custom form view chargertransactions-->
+
+
+      <menuitem id="main_root" name="Maint." sequence="10"/>
+
+      <menuitem id="maint_chargetransaction"
+                  name="ChargeTransactions"
+                  parent ="maint_root"
+                  action="ez_maint_chargertransactions_action_window"
+                  sequence="10"/>
+
+
+    </data>
+</odoo>
